@@ -8,12 +8,12 @@ Dictionary::Dictionary(string fname, string paramFileName){
     
     h1.dump();
 
-
+    collisiontable(fname);
 
     cout<< "Make hash function array:"<<endl;
     make_hash_func_arr();
 
-    collisiontable(fname);
+    
 
     cout<< "Make primary array:"<<endl;
     createPrimaryArr(fname);
