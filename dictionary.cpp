@@ -73,6 +73,9 @@ void Dictionary::createPrimaryArr(string inFile){
             hash_Main_Arr[i] = new string [collision_ptr[i]];
         }
     }
+    cout<< "Main array made" <<endl;
+    cout<< "Starting secondary tables:" <<endl;
+
 
     string line;
     ifstream inF;
@@ -83,7 +86,7 @@ void Dictionary::createPrimaryArr(string inFile){
     while(getline(inF,line)){
         //bool chk = check_key_exist(line);
 
-        int key = h1.hash(line) % primary_array_size;
+        int key = (h1.hash(line) % primary_array_size);
         string* itr  = hash_table[key];
             for(int i = 0; i < collision_ptr[key]; i++){
                 if(hash_Main_Arr[key][i] == ""){
@@ -114,7 +117,7 @@ void Dictionary::createPrimaryArr(string inFile){
         }*/
     }
     inF.close();
-
+    cout<< "Secondary tables made" <<endl;
 
 }
 
