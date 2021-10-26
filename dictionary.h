@@ -34,10 +34,6 @@ class Dictionary{
 
         void createPrimaryArr(string inFile);
 
-
-
-
-
     
     private:
 
