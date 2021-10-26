@@ -10,13 +10,13 @@ Dictionary::Dictionary(string fname, string paramFileName){
 
     collisiontable(fname);
 
-    cout<< "Make hash function array:"<<endl;
+    //cout<< "Make hash function array:"<<endl;
     make_hash_func_arr();
 
-    cout<< "Make primary array:"<<endl;
+    //cout<< "Make primary array:"<<endl;
     createPrimaryArr(fname);
 
-    cout<< "Make correct array:"<<endl;
+    //cout<< "Make correct array:"<<endl;
     find_correct_hashes();
 
 }
@@ -173,4 +173,18 @@ int Dictionary::max_num_collision(){
         max = max-1;
     }
     return max;
+}
+
+void Dictionary::print_primary_slots(){
+    
+    for(int i = 0; i < 21; i++){
+        cout << "# of primary slots with " << i << " words = ";
+        int b = 0;
+        for(int j = 0; j < primary_array_size; j++){
+            if(i == collision_ptr[j]){
+                b += 1;
+            }
+        }
+        cout << b << endl;
+    }
 }

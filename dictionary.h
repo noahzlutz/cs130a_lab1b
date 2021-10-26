@@ -34,6 +34,8 @@ class Dictionary{
 
         void createPrimaryArr(string inFile);
 
+        void print_primary_slots();
+
     
     private:
 
