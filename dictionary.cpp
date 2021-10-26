@@ -8,8 +8,12 @@ Dictionary::Dictionary(string fname, string paramFileName){
     
     h1.dump();
 
+
+
     cout<< "Make hash function array:"<<endl;
     make_hash_func_arr();
+
+    collisiontable(fname);
 
     cout<< "Make primary array:"<<endl;
     createPrimaryArr(fname);
@@ -19,9 +23,7 @@ Dictionary::Dictionary(string fname, string paramFileName){
 
 }
 
-Dictionary::~Dictionary(){
-    
-}
+Dictionary::~Dictionary(){}
 
 void Dictionary::set_primes_and_primArraySize(string cfile){
     string line;
@@ -66,6 +68,7 @@ void Dictionary::collisiontable(string inFile){
 void Dictionary::createPrimaryArr(string inFile){
     string** hash_Main_Arr = new string* [primary_array_size];
     hash_table = hash_Main_Arr;
+    
     for (int i = 0; i < primary_array_size; i++){
         if (collision_ptr[i]== 0){
             hash_Main_Arr[i] = NULL;
