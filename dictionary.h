@@ -19,11 +19,11 @@ class Dictionary{
 
         ~Dictionary();
 
-        int get_input_size();
+        int get_input_size(); //done
 
-        int get_number_of_words(); 
+        int get_number_of_words();
 
-        int get_primary_arr_size();
+        int get_primary_arr_size(); //done
 
         void print_hash_buckets();
 
@@ -33,7 +33,9 @@ class Dictionary{
 
         void most_pop_bucket_words();
 
-        void createPrimaryArr(string inFile); //done maybe
+        void createPrimaryArr(string inFile);
+
+
 
     
     private:
@@ -58,6 +60,7 @@ class Dictionary{
 
         string** hash_table;
 
+        Hash24** hash_func_arr;
 
         void set_primes_and_primArraySize(string cfile); //done
         
@@ -66,6 +69,11 @@ class Dictionary{
         void collisiontable(string inFile); //done
 
         void hash_func_table();
+
+        void make_hash_func_arr();
+
+        void find_correct_hashes();
+
 
 
 };
