@@ -16,6 +16,9 @@ Dictionary::Dictionary(string fname, string paramFileName){
 
 }
 
+Dictionary::~Dictionary(){
+    
+}
 
 void Dictionary::set_primes_and_primArraySize(string cfile){
     string line;
