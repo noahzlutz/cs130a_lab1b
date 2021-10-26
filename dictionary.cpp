@@ -8,10 +8,13 @@ Dictionary::Dictionary(string fname, string paramFileName){
     
     h1.dump();
 
+    cout<< "Make hash function array:"<<endl;
     make_hash_func_arr();
 
+    cout<< "Make primary array:"<<endl;
     createPrimaryArr(fname);
 
+    cout<< "Make correct array:"<<endl;
     find_correct_hashes();
 
 }
