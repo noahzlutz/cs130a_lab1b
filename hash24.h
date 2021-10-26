@@ -3,6 +3,8 @@
 
 #include <string>
 #include <ctime>
+#include <time.h> 
+#include <stdlib.h>  
 
 // Helper class for calculating hash values using universal randomly selected hash functions.
 class Hash24 {

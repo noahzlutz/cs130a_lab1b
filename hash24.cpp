@@ -1,5 +1,5 @@
 #include "hash24.h"
-#include <ctime>
+#include <time.h> 
 #include <iostream>
 #include <string>
 
