@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 static bool initialized = false;
 
 Hash24::Hash24() {
@@ -30,7 +32,7 @@ Hash24::Hash24(unsigned long rand_a, unsigned long rand_b, unsigned long rand_c)
 }
 
 int Hash24::hash(unsigned long x) {
-    if (x >= prime2) throw std::runtime_error( "Input is greater than prime number!!" ); ;
+    if (x >= prime2) throw runtime_error( "Input is greater than prime number!!" ); ;
     return (int) ( ( random_a * x + random_b ) % prime2 ) ;
 }
 
