@@ -6,7 +6,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <ctime>
 
 using namespace std;
 
@@ -29,11 +28,13 @@ class Dictionary{
 
         void check_queries(string Qfile);
 
-        int max_num_collision();
+        int max_num_collision(); //done
 
         void most_pop_bucket_words();
 
         void createPrimaryArr(string inFile);
+
+        
 
 
 

@@ -10,6 +10,10 @@ Dictionary::Dictionary(string fname, string paramFileName){
 
     make_hash_func_arr();
 
+    createPrimaryArr(fname);
+
+    find_correct_hashes();
+
 }
 
 
@@ -116,28 +120,47 @@ void Dictionary::make_hash_func_arr(){
 void Dictionary::find_correct_hashes(){
     
     for (int j = 0; j < primary_array_size; j++){
-        bool corr = false;
-        Hash24* h_corr;
-        string* corr_ptr;
-        while(!corr){
-            string* tmp_ptr = new string[collision_ptr[j]*collision_ptr[j]];
-            Hash24* h2 = new Hash24(prime_a, prime_b, prime_c);
-            bool corr2 = true;
-            for(int k = 0; k < collision_ptr[j]; k++){
-                size_t key = (*h2).hash(hash_table[j][k])%collision_ptr[j];
-                if(tmp_ptr[key] != ""){
-                    corr2 =false;
-                    delete[] h2;
-                    break;
+        if(hash_table[j] != NULL){
+            bool corr = false;
+            Hash24* h_corr;
+            string* corr_ptr;
+            while(!corr){
+                string* tmp_ptr = new string[collision_ptr[j]*collision_ptr[j]];
+                Hash24* h2 = new Hash24(prime_a, prime_b, prime_c);
+                bool corr2 = true;
+                for(int k = 0; k < collision_ptr[j]; k++){
+                    size_t key = (*h2).hash(hash_table[j][k])%collision_ptr[j];
+                    if(tmp_ptr[key] != ""){
+                        corr2 =false;
+                        delete[] h2;
+                        break;
+                    }
+                }
+                if(corr2 == true){
+                    corr = true;
+                    h_corr = h2;
+                    corr_ptr = tmp_ptr;
                 }
             }
-            if(corr2 == true){
-                corr = true;
-                h_corr = h2;
-                corr_ptr = tmp_ptr;
-            }
+            delete[] hash_table[j];
+            hash_func_arr[j] = h_corr;
+            hash_table[j] = corr_ptr;
         }
-        hash_func_arr[j] = h_corr;
-        hash_table[j] = corr_ptr;
+        
     }
+}
+
+
+int Dictionary::max_num_collision(){
+    int max  = collision_ptr[0];
+    for (int i = 0; i < primary_array_size; i++){
+        if(collision_ptr[i] > max){
+            max = collision_ptr[i];
+            most_pop_bucket_idx = i;
+        }
+    }
+    if(max > 0){
+        max = max-1;
+    }
+    return max;
 }
