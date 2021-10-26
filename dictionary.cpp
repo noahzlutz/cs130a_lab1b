@@ -169,9 +169,6 @@ int Dictionary::max_num_collision(){
             most_pop_bucket_idx = i;
         }
     }
-    if(max > 0){
-        max = max-1;
-    }
     return max;
 }
 
@@ -187,4 +184,12 @@ void Dictionary::print_primary_slots(){
         }
         cout << b << endl;
     }
+}
+
+void Dictionary::most_pop_bucket_words(){
+    cout<< "** Words in the slot wiht the most collisions ***" <<endl;
+    for(int i = 0; i < collision_ptr[most_pop_bucket_idx]; i++){
+        cout<< hash_table[most_pop_bucket_idx][i] << endl;
+    }
+    cout<<  endl;
 }
