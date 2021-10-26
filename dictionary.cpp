@@ -54,11 +54,10 @@ void Dictionary::collisiontable(string inFile){
     }
     input_size  = 0;
     while(getline(inF,line)){
-        cout << (*h1).hash(line);
+        cout << "gaaahhhh"<<endl;
         int indx = (*h1).hash(line);
         collisionarr[indx] += 1;
         input_size +=1;
-        
     }
     inF.close();
     
