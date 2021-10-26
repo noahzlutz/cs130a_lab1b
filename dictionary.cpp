@@ -4,7 +4,7 @@ Dictionary::Dictionary(string fname, string paramFileName){
     
     set_primes_and_primArraySize(paramFileName);
 
-    h1 = set_hash24(prime_a, prime_b, prime_c);
+    h1 = Hash24(prime_a, prime_b, prime_c);
     
     h1.dump();
 
@@ -53,6 +53,7 @@ void Dictionary::collisiontable(string inFile){
     }
     input_size  = 0;
     while(getline(inF,line)){
+
         int indx = h1.hash(line);
         collisionarr[indx] += 1;
         input_size +=1;
