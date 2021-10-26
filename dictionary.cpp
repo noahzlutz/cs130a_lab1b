@@ -4,9 +4,9 @@ Dictionary::Dictionary(string fname, string paramFileName){
     
     set_primes_and_primArraySize(paramFileName);
 
-    h1 = Hash24(prime_a, prime_b, prime_c);
+    h1 = set_hash24(prime_a,prime_b,prime_c);
     
-    h1.dump();
+    (*h1).dump();
 
     collisiontable(fname);
 
@@ -31,8 +31,9 @@ void Dictionary::set_primes_and_primArraySize(string cfile){
     cF.close();
 }
 
-Hash24 Dictionary::set_hash24(unsigned long a,unsigned long b,unsigned long c){
-    return Hash24(a, b, c);
+Hash24* Dictionary::set_hash24(unsigned long a,unsigned long b,unsigned long c){
+    Hash24* h = new Hash24(a, b, c);
+    return h;
 }
 
 int Dictionary::get_input_size(){
@@ -54,7 +55,7 @@ void Dictionary::collisiontable(string inFile){
     input_size  = 0;
     while(getline(inF,line)){
 
-        int indx = h1.hash(line);
+        int indx = (*h1).hash(line);
         collisionarr[indx] += 1;
         input_size +=1;
         
@@ -88,7 +89,7 @@ void Dictionary::createPrimaryArr(string inFile){
     while(getline(inF,line)){
         //bool chk = check_key_exist(line);
 
-        int key = (h1.hash(line) % primary_array_size);
+        int key = ((*h1).hash(line) % primary_array_size);
         string* itr  = hash_table[key];
             for(int i = 0; i < collision_ptr[key]; i++){
                 if(hash_Main_Arr[key][i] == ""){

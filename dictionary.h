@@ -34,14 +34,14 @@ class Dictionary{
 
         void createPrimaryArr(string inFile);
 
-        
+
 
 
 
     
     private:
 
-        Hash24 h1;
+        Hash24* h1;
 
         size_t primary_array_size; 
 
@@ -65,7 +65,7 @@ class Dictionary{
 
         void set_primes_and_primArraySize(string cfile); //done
         
-        Hash24 set_hash24(unsigned long a,unsigned long b,unsigned long c); //done
+        Hash24* set_hash24(unsigned long a,unsigned long b,unsigned long c); //done
 
         void collisiontable(string inFile); //done
 
